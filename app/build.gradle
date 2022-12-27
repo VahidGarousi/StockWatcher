@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'dev.garousi.lightstreamersamples'
+    namespace 'dev.garousi.stock_watcher'
     compileSdk 33
 
     defaultConfig {
-        applicationId "dev.garousi.lightstreamersamples"
+        applicationId "dev.garousi.stock_watcher"
         minSdk 23
         targetSdk 33
         versionCode 1

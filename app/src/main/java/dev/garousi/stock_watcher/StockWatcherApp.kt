@@ -1,7 +1,7 @@
-package dev.garousi.lightstreamersamples
+package dev.garousi.stock_watcher
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class LsApp : Application()
+class StockWatcherApp : Application()

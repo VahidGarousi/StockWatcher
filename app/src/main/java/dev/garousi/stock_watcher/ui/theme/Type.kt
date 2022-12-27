@@ -1,4 +1,4 @@
-package dev.garousi.lightstreamersamples.ui.theme
+package dev.garousi.stock_watcher.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
