@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -43,6 +45,8 @@ android {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/io.netty.versions.properties'
     }
 }
 
@@ -66,5 +70,14 @@ dependencies {
 
     implementation "com.lightstreamer:ls-android-client:4.2.6"
     implementation "com.lightstreamer:ls-log-adapter-java:1.0.2"
-    implementation "com.lightstreamer:android-log-wrapper:1.0.1"
+
+
+    implementation "com.google.dagger:hilt-android:2.44.2"
+    kapt "com.google.dagger:hilt-compiler:2.44.2"
+
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
 }
