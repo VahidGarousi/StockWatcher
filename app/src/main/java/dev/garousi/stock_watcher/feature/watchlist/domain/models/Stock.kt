@@ -3,6 +3,7 @@ package dev.garousi.stock_watcher.feature.watchlist.domain.models
 import java.time.LocalTime
 
 data class Stock(
+    val name: String,
     val id: String,
     val last: Long,
     val time: LocalTime,

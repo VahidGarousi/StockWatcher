@@ -18,6 +18,7 @@ class StockRepositoryImpl @Inject constructor(
 val stocks = arrayListOf<Stock>().apply {
     add(
         Stock(
+            name = "Apple",
             id = UUID.randomUUID().toString(),
             last = 1250,
             time = LocalTime.now(),
@@ -34,6 +35,7 @@ val stocks = arrayListOf<Stock>().apply {
     )
     add(
         Stock(
+            name = "Tesla",
             id = UUID.randomUUID().toString(),
             last = 1150,
             time = LocalTime.now(),
