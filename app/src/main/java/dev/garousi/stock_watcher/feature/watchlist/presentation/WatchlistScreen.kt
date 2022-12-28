@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -30,7 +28,6 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import dev.garousi.stock_watcher.feature.watchlist.domain.models.Stock
 
 @Composable
 fun Watchlist(
@@ -50,7 +47,7 @@ fun Watchlist(
         when (val state = uiState) {
             WatchlistState.Error -> ErrorView()
             WatchlistState.Loading -> LoadingView()
-            is WatchlistState.Success -> Watchlist(state.stocks)
+            is WatchlistState.Success -> StockList(state.stocks)
         }
     }
 
@@ -104,25 +101,5 @@ fun ErrorView() {
             text = "Error Happened",
             modifier = Modifier.align(Alignment.Center)
         )
-    }
-}
-
-@Composable
-private fun Watchlist(
-    stocks: List<Stock>
-) {
-    LazyColumn(
-        modifier = Modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(16.dp)
-    ) {
-        itemsIndexed(
-            items = stocks,
-            key = { index, item -> item.id }
-        ) { index, stock ->
-            StockItem(
-                stock = stock,
-                index = index
-            )
-        }
     }
 }
