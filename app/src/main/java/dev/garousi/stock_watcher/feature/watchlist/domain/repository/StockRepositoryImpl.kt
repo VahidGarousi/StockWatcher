@@ -19,35 +19,35 @@ val stocks = arrayListOf<Stock>().apply {
     add(
         Stock(
             name = "Apple",
-            id = UUID.randomUUID().toString(),
-            last = 1250,
+            itemName = UUID.randomUUID().toString(),
+            last = 1250.0,
             time = LocalTime.now(),
-            change = 1_5,
-            bidSize = 12_300,
-            bid = 12_0,
-            ask = 9_0,
-            askSize = 1240,
-            min = 999,
-            max = 1580,
-            ref = 124,
-            open = 1010
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1010.0
         )
     )
     add(
         Stock(
             name = "Tesla",
-            id = UUID.randomUUID().toString(),
-            last = 1150,
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
             time = LocalTime.now(),
-            change = 1_5,
-            bidSize = 12_300,
-            bid = 12_0,
-            ask = 9_0,
-            askSize = 1240,
-            min = 999,
-            max = 1580,
-            ref = 124,
-            open = 1710
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
         )
     )
 }
