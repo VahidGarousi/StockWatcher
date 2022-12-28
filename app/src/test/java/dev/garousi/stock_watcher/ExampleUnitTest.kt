@@ -1,4 +1,4 @@
-package dev.garousi.lightstreamersamples
+package dev.garousi.stock_watcher
 
 import org.junit.Test
 
