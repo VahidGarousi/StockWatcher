@@ -27,23 +27,26 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import dev.garousi.stock_watcher.feature.watchlist.domain.models.Stock
+import dev.garousi.stock_watcher.ui.colorRes
+import dev.garousi.stock_watcher.ui.imageVectorId
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun StockItem(
     stock: Stock,
-    index: Int
+    index: Int,
+    backgroundColor: Color = MaterialTheme.colors.surface,
+    onClick: (Stock) -> Unit = {}
 ) {
     val density = LocalDensity.current
-    val backgroundColor = MaterialTheme.colors.surface
     Card(
         backgroundColor = backgroundColor,
         contentColor = MaterialTheme.colors.onSurface,
@@ -51,7 +54,7 @@ fun StockItem(
             .padding(
                 bottom = 8.dp
             )
-            .testTag("stock_$index")
+            .testTag(StockItemTestTags.card + index)
             .drawBehind {
                 val shadowColor = Color.Black.toArgb()
                 val transparentColor = backgroundColor
@@ -93,7 +96,7 @@ fun StockItem(
                     )
                 )
             },
-        onClick = {},
+        onClick = { onClick(stock) },
         shape = RoundedCornerShape(8.dp)
     ) {
         Box(
@@ -109,7 +112,7 @@ fun StockItem(
                 ),
                 modifier = Modifier
                     .align(Alignment.CenterStart)
-                    .testTag("stock_${index}_name")
+                    .testTag(StockItemTestTags.name + index)
             )
             Row(
                 modifier = Modifier.align(Alignment.CenterEnd),
@@ -122,7 +125,9 @@ fun StockItem(
                     modifier = Modifier
                         .drawBehind {
                             drawRoundRect(
-                                color = if (stock.change > 0) Color(0XFF48BE62) else Color(0XFFBE4848),
+                                color = if (stock.change > 0) Color(0XFF48BE62) else Color(
+                                    0XFFBE4848
+                                ),
                                 cornerRadius = CornerRadius(
                                     x = density.run { 4.dp.toPx() },
                                     y = density.run { 4.dp.toPx() }
@@ -130,7 +135,7 @@ fun StockItem(
                             )
                         }
                         .padding(vertical = 2.dp, horizontal = 16.dp)
-                        .testTag("stock_${index}_last")
+                        .testTag(StockItemTestTags.lastPrice + index)
                 )
                 Spacer(modifier = Modifier.width(24.dp))
                 Text(
@@ -139,15 +144,31 @@ fun StockItem(
                         append(" ")
                         append("${stock.change}")
                     },
-                    modifier = Modifier.testTag("stock_${index}_change")
+                    modifier = Modifier.testTag(StockItemTestTags.priceChange + index)
                 )
                 Icon(
                     imageVector = if (stock.change > 0) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
                     contentDescription = null,
                     tint = if (stock.change > 0) Color(0XFF48BE62) else Color(0XFFBE4848),
-                    modifier = Modifier.testTag("stock_${index}_arrow")
+                    modifier = Modifier
+                        .testTag(StockItemTestTags.arrow + index)
+                        .semantics {
+                            imageVectorId =
+                                if (stock.change > 0) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown
+                            colorRes =
+                                if (stock.change > 0) Color(0XFF48BE62) else Color(0XFFBE4848)
+                        }
                 )
             }
         }
     }
+}
+
+
+object StockItemTestTags {
+    const val card = "stock_card_"
+    const val name = "stock_name_"
+    const val lastPrice = "stock_lastPrice_"
+    const val priceChange = "stock_priceChange_"
+    const val arrow = "stock_arrow_"
 }
