@@ -23,7 +23,7 @@ fun StockList(
     ) {
         itemsIndexed(
             items = stocks,
-            key = { index, item -> item.id }
+            key = { index, item -> item.itemName }
         ) { index, stock ->
             StockItem(
                 stock = stock,

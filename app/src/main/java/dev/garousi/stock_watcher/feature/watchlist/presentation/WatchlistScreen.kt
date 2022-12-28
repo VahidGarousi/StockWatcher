@@ -44,11 +44,7 @@ fun Watchlist(
                 style = MaterialTheme.typography.h6
             )
         }
-        when (val state = uiState) {
-            WatchlistState.Error -> ErrorView()
-            WatchlistState.Loading -> LoadingView()
-            is WatchlistState.Success -> StockList(state.stocks)
-        }
+        StockList(stocks = uiState.stocks)
     }
 
 }
