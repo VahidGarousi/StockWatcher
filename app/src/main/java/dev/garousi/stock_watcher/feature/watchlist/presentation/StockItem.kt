@@ -140,8 +140,7 @@ fun StockItem(
                 Spacer(modifier = Modifier.width(24.dp))
                 Text(
                     text = buildAnnotatedString {
-                        if (stock.change > 0) append("+") else append("-")
-                        append(" ")
+                        if (stock.change > 0) append("+")
                         append("${stock.change}")
                     },
                     modifier = Modifier.testTag(StockItemTestTags.priceChange + index)
