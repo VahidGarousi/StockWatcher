@@ -1,6 +1,7 @@
 package dev.garousi.stock_watcher.feature.watchlist.presentation
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -44,6 +45,7 @@ import dev.garousi.stock_watcher.ui.imageVectorId
 fun StockItem(
     stock: Stock,
     index: Int,
+    modifier : Modifier = Modifier,
     backgroundColor: Color = MaterialTheme.colors.surface,
     onClick: (Stock) -> Unit = {}
 ) {
@@ -108,15 +110,17 @@ fun StockItem(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = stock.name,
-                style = MaterialTheme.typography.body1.copy(
-                    fontWeight = FontWeight.Bold
-                ),
-                modifier = Modifier
-                    .weight(0.5f)
-                    .testTag(StockItemTestTags.name + index)
-            )
+            Box(
+                modifier = Modifier.weight(0.5f)
+            ) {
+                Text(
+                    text = stock.name,
+                    style = MaterialTheme.typography.body1.copy(
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = modifier.testTag(StockItemTestTags.name + index)
+                )
+            }
             Row(
                 modifier = Modifier
                     .weight(0.5f)
@@ -128,7 +132,7 @@ fun StockItem(
                     text = "${stock.last}",
                     style = MaterialTheme.typography.subtitle2,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier
+                    modifier = modifier
                         .width(72.dp)
                         .drawBehind {
                             drawRoundRect(
@@ -150,7 +154,7 @@ fun StockItem(
                         if (stock.change > 0) append("+")
                         append("${stock.change}")
                     },
-                    modifier = Modifier.testTag(StockItemTestTags.priceChange + index),
+                    modifier = modifier.testTag(StockItemTestTags.priceChange + index),
                     style = MaterialTheme.typography.subtitle1,
                     textAlign = TextAlign.Center
                 )
@@ -158,7 +162,7 @@ fun StockItem(
                     imageVector = if (stock.change > 0) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
                     contentDescription = null,
                     tint = if (stock.change > 0) Color(0XFF48BE62) else Color(0XFFBE4848),
-                    modifier = Modifier
+                    modifier = modifier
                         .testTag(StockItemTestTags.arrow + index)
                         .semantics {
                             imageVectorId =
