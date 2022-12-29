@@ -1,9 +1,9 @@
 package dev.garousi.stock_watcher.feature.watchlist.presentation
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -33,6 +33,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import dev.garousi.stock_watcher.feature.watchlist.domain.models.Stock
 import dev.garousi.stock_watcher.ui.colorRes
@@ -99,11 +100,13 @@ fun StockItem(
         onClick = { onClick(stock) },
         shape = RoundedCornerShape(8.dp)
     ) {
-        Box(
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp)
-                .padding(12.dp)
+                .padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 text = stock.name,
@@ -111,18 +114,22 @@ fun StockItem(
                     fontWeight = FontWeight.Bold
                 ),
                 modifier = Modifier
-                    .align(Alignment.CenterStart)
+                    .weight(0.5f)
                     .testTag(StockItemTestTags.name + index)
             )
             Row(
-                modifier = Modifier.align(Alignment.CenterEnd),
+                modifier = Modifier
+                    .weight(0.5f)
+                    .fillMaxSize(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     text = "${stock.last}",
-                    style = MaterialTheme.typography.body1,
+                    style = MaterialTheme.typography.subtitle2,
+                    textAlign = TextAlign.Center,
                     modifier = Modifier
+                        .width(72.dp)
                         .drawBehind {
                             drawRoundRect(
                                 color = if (stock.change > 0) Color(0XFF48BE62) else Color(
@@ -143,7 +150,9 @@ fun StockItem(
                         if (stock.change > 0) append("+")
                         append("${stock.change}")
                     },
-                    modifier = Modifier.testTag(StockItemTestTags.priceChange + index)
+                    modifier = Modifier.testTag(StockItemTestTags.priceChange + index),
+                    style = MaterialTheme.typography.subtitle1,
+                    textAlign = TextAlign.Center
                 )
                 Icon(
                     imageVector = if (stock.change > 0) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
