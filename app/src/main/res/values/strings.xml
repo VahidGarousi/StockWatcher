@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Stock Watcher</string>
     <string name="home">Home</string>
+    <string name="stocks_empty_error">No stocks updates</string>
+    <string name="stocks_empty_description">Stock market updated shows here</string>
 </resources>

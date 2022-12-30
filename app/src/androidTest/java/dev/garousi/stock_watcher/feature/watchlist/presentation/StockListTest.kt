@@ -1,8 +1,6 @@
 package dev.garousi.stock_watcher.feature.watchlist.presentation
 
-import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onChildren
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performScrollToIndex
 import dev.garousi.stock_watcher.feature.watchlist.domain.models.Stock
@@ -19,7 +17,7 @@ class StockListTest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun assertStockListIsDisplayed() {
+    fun stocks_whenHasStocks_showsStocks() {
         with(composeTestRule) {
             setContent {
                 StockWatcherTheme(true) {
@@ -37,22 +35,20 @@ class StockListTest {
     }
 
     @Test
-    fun assertStockListIsNotDisplayed() {
+    fun stocks_whenHasNoStocks_showsNothing() {
         with(composeTestRule) {
             setContent {
                 StockWatcherTheme(true) {
                     StockList(stocks = emptyList())
                 }
             }
-            onNodeWithTag(stockListItems)
-                .onChildren()
-                .assertCountEquals(0)
+            onNodeWithTag(watchlistStocks).assertDoesNotExist()
         }
     }
 
     @Test
     fun assertStockListScrollAction() {
-        val stocks = stocks
+        val stocks = testStocks
         var canScroll: Boolean
         repeat(200) { index ->
             val last = if (index % 2 == 0) 1250.0 else (0.5 * index)
@@ -89,7 +85,7 @@ class StockListTest {
                     StockList(stocks = stocks)
                 }
             }
-            val visibleItemsSize = getVisibleStockListSize(stockListItems)
+            val visibleItemsSize = getVisibleStockListSize(watchlistStocks)
             var currentIndex = visibleItemsSize
             repeat(visibleItemsSize) { index ->
                 assertCardIsDisplayed(index)
@@ -102,7 +98,7 @@ class StockListTest {
                     } else {
                         currentIndex = stocks.lastIndex
                     }
-                    onNodeWithTag(stockListItems).performScrollToIndex(currentIndex)
+                    onNodeWithTag(watchlistStocks).performScrollToIndex(currentIndex)
                     assertCardIsDisplayed(currentIndex)
                 }
                 canScroll = currentIndex < stocks.size - 1
@@ -110,4 +106,246 @@ class StockListTest {
         }
     }
 
+}
+
+
+private val testStocks = arrayListOf<Stock>().apply {
+    add(
+        Stock(
+            name = "Apple",
+            itemName = UUID.randomUUID().toString(),
+            last = 1250.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1010.0
+        )
+    )
+    add(
+        Stock(
+            name = "Tesla",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
+    add(
+        Stock(
+            name = "CVS Asia",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
+    add(
+        Stock(
+            name = "Datio PLC",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
+    add(
+        Stock(
+            name = "MED",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
+    add(
+        Stock(
+            name = "Dentemes",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
+    add(
+        Stock(
+            name = "Datio PLC",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
+    add(
+        Stock(
+            name = "ELE",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
+    add(
+        Stock(
+            name = "Lted",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
+    add(
+        Stock(
+            name = "Corcor",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
+    add(
+        Stock(
+            name = "Excat Tom",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
+    add(
+        Stock(
+            name = "PRess",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
+    add(
+        Stock(
+            name = "News 2",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
+    add(
+        Stock(
+            name = "IGTV",
+            itemName = UUID.randomUUID().toString(),
+            last = 1150.0,
+            time = LocalTime.now(),
+            change = 1_5.0,
+            bidSize = 12_300.0,
+            bid = 12_0.0,
+            ask = 9_0.0,
+            askSize = 1240.0,
+            min = 999.0,
+            max = 1580.0,
+            ref = 124.0,
+            open = 1710.0
+        )
+    )
 }

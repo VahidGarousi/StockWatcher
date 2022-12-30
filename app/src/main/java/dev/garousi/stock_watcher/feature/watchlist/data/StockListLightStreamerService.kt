@@ -5,7 +5,6 @@ import com.lightstreamer.client.ItemUpdate
 import com.lightstreamer.client.Subscription
 import com.lightstreamer.client.SubscriptionListener
 import java.time.LocalTime
-import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -135,7 +134,7 @@ class StockListLightStreamerService @Inject constructor(
         val ref = itemUpdate.getValue(REF_PRICE)?.toDouble() ?: dto.ref
         val open = itemUpdate.getValue(OPEN_PRICE)?.toDouble() ?: dto.open
         val stringTime = itemUpdate.getValue(TIME)
-        val time =  LocalTime.parse(stringTime)  ?: dto.time
+        val time = LocalTime.parse(stringTime) ?: dto.time
         val itemName = itemUpdate.itemName
         val itemPos = itemUpdate.itemPos
         dto = dto.copy(
@@ -163,4 +162,5 @@ class StockListLightStreamerService @Inject constructor(
         connection.unsubscribe()
         scope.cancel()
     }
+
 }

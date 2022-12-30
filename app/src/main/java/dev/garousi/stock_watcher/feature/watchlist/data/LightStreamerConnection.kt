@@ -62,15 +62,15 @@ class LightStreamerConnectionImpl @Inject constructor(
         lsClient?.connect()
         lsClient?.addListener(object : ClientListener by EmptyClientListener {
             override fun onListenStart(client: LightstreamerClient) {
-                Log.i("LOGGER","")
+                Log.i("LOGGER", "")
             }
 
             override fun onServerError(errorCode: Int, errorMessage: String) {
-                Log.i("LOGGER","" + errorMessage + errorCode)
+                Log.i("LOGGER", "" + errorMessage + errorCode)
             }
 
             override fun onStatusChange(status: String) {
-                Log.i("LOGGER","" + status)
+                Log.i("LOGGER", "" + status)
             }
         })
     }
