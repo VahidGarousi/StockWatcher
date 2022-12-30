@@ -1,4 +1,4 @@
-package dev.garousi.stock_watcher
+package dev.garousi.stock_watcher.utils
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color

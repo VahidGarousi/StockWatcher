@@ -25,17 +25,28 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import dev.garousi.stock_watcher.feature.watchlist.domain.models.Stock
 
 @Composable
-fun Watchlist(
+fun WatchlistScreen(
     viewModel: WatchlistViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    WatchlistScreen(stocks = uiState.stocks)
+}
+
+@Composable
+fun WatchlistScreen(
+    stocks: List<Stock>
+) {
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .testTag("watchlist_root")
     ) {
         WatchlistTopAppBar {
             Text(
@@ -44,13 +55,12 @@ fun Watchlist(
                 style = MaterialTheme.typography.h6
             )
         }
-        StockList(stocks = uiState.stocks)
+        StockList(stocks = stocks)
     }
-
 }
 
 @Composable
-fun WatchlistTopAppBar(
+private fun WatchlistTopAppBar(
     modifier: Modifier = Modifier,
     backgroundColor: Color = MaterialTheme.colors.primarySurface,
     contentColor: Color = contentColorFor(backgroundColor),
@@ -77,8 +87,9 @@ fun WatchlistTopAppBar(
     }
 }
 
+
 @Composable
-fun LoadingView() {
+private fun LoadingView() {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -89,7 +100,7 @@ fun LoadingView() {
 }
 
 @Composable
-fun ErrorView() {
+private fun ErrorView() {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
