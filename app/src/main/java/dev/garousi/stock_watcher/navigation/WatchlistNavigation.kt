@@ -5,7 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import dev.garousi.stock_watcher.feature.watchlist.presentation.Watchlist
+import dev.garousi.stock_watcher.feature.watchlist.presentation.WatchlistScreen
 
 
 const val watchlistGraphRoutePattern = "watchlist_graph"
@@ -23,7 +23,7 @@ fun NavGraphBuilder.watchlistGraph(
         startDestination = watchlistListRoute
     ) {
         composable(route = watchlistListRoute) {
-            Watchlist()
+            WatchlistScreen()
         }
         nestedGraphs()
     }
