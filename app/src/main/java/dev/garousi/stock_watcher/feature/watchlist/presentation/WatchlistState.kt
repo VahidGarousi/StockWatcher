@@ -7,5 +7,6 @@ data class WatchlistState(
         (1..16).forEach {
             add(Stock(itemName = "itemName$it"))
         }
-    }
+    },
+    val isLoading: Boolean = false
 )

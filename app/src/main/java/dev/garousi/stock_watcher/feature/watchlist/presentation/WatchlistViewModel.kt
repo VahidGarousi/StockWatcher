@@ -24,6 +24,7 @@ class WatchlistViewModel @Inject constructor(
     val uiState = _uiState.asStateFlow()
 
     init {
+        _uiState.update { it.copy(isLoading = true) }
         subscribeToDemoAdapterSet()
     }
 
@@ -35,6 +36,7 @@ class WatchlistViewModel @Inject constructor(
                 Log.i("LOGGER", "" + cause.localizedMessage.orEmpty())
             }
             .map { stock ->
+                _uiState.update { it.copy(isLoading = false) }
                 stock.itemPos?.let { updatedItemIndex ->
                     _uiState.update {
                         it.copy(
