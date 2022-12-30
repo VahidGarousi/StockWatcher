@@ -14,5 +14,8 @@ jobs:
         with:
           java-version: 1.11
 
+     - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Build Project
         run: ./gradlew assemble
