@@ -58,8 +58,9 @@ jobs:
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
           api-level: 29
+          profile: pixel_4
           disable-animations: true
-          script: ./gradlew app:connectedCheck --stacktrace
+          script: ./gradlew connectedCheck --stacktrace
 
       - name: Upload test report
         uses: actions/upload-artifact@v2
