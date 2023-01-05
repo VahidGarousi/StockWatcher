@@ -59,7 +59,7 @@ jobs:
         with:
           api-level: 29
           disable-animations: true
-          script: ./gradlew app:connectedCheck --stacktrace --info
+          script: ./gradlew app:connectedCheck --stacktrace
 
       - name: Upload test report
         uses: actions/upload-artifact@v2
