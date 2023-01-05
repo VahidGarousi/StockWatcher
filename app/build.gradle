@@ -6,17 +6,17 @@ plugins {
 }
 
 android {
-    namespace 'dev.garousi.stock_watcher'
+    namespace 'dev.garousi.stockwatcher'
     compileSdk 33
 
     defaultConfig {
-        applicationId "dev.garousi.stock_watcher"
+        applicationId "dev.garousi.stockwatcher"
         minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "dev.garousi.stock_watcher.HiltTestRunner"
+        testInstrumentationRunner "dev.garousi.stockwatcher.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary true
         }

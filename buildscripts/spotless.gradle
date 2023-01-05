@@ -1,0 +1,14 @@
+apply plugin: "com.diffplug.spotless"
+
+afterEvaluate {
+    spotlessApply {
+        spotless {
+            kotlin {
+                target("**/*.kt")
+                targetExclude("**/build/**/*.kt")
+                // version, setUseExperimental, userData and editorConfigOverride are all optional
+                ktlint("0.48.1")
+            }
+        }
+    }
+}
