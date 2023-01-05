@@ -17,7 +17,6 @@ class StockItemTest {
     private val actualStockItem = stocks.first()
     private val actualStockItemIndex = 0
 
-
     @Test
     fun assertStockIsDisplayed() {
         with(composeTestRule) {
@@ -36,20 +35,15 @@ class StockItemTest {
         }
     }
 
-
     @Test
     fun clickOnStockItem() {
         var hasClickedOnStockItem = false
         with(composeTestRule) {
             setContent {
                 StockWatcherTheme {
-                    StockItem(
-                        stock = actualStockItem,
-                        index = 0,
-                        onClick = {
-                            hasClickedOnStockItem = true
-                        }
-                    )
+                    StockItem(stock = actualStockItem, index = 0, onClick = {
+                        hasClickedOnStockItem = true
+                    })
                 }
             }
             onNodeWithTag(StockItemTestTags.card + actualStockItemIndex).performClick()
