@@ -55,7 +55,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Run Android Instrumentation Tests
-        uses: ReactiveCircus/android-emulator-runner@v2.27.0
+        uses: ReactiveCircus/android-emulator-runner@v2
         with:
           api-level: 29
           disable-animations: true
