@@ -1,3 +1,5 @@
+@file:Suppress("FunctionNaming", "LongParameterList")
+
 package dev.garousi.stockwatcher.feature.watchlist.presentation
 
 import androidx.compose.animation.AnimatedVisibility
@@ -127,29 +129,6 @@ private fun WatchlistTopAppBar(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = CenterVertically,
             content = content,
-        )
-    }
-}
-
-@Composable
-private fun LoadingView() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-    ) {
-        CircularProgressIndicator(
-            modifier = Modifier.align(Alignment.Center),
-        )
-    }
-}
-
-@Composable
-private fun ErrorView() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-    ) {
-        Text(
-            text = "Error Happened",
-            modifier = Modifier.align(Alignment.Center),
         )
     }
 }

@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber", "LongMethod", "FunctionNaming", "CyclomaticComplexMethod")
+
 package dev.garousi.stockwatcher.feature.watchlist.presentation
 
 import androidx.compose.foundation.layout.Arrangement
@@ -159,7 +161,10 @@ fun StockItem(
                     textAlign = TextAlign.Center,
                 )
                 Icon(
-                    imageVector = if (stock.change > 0) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
+                    imageVector = if (stock.change > 0)
+                        Icons.Filled.KeyboardArrowUp
+                    else
+                        Icons.Filled.KeyboardArrowDown,
                     contentDescription = null,
                     tint = if (stock.change > 0) Color(0XFF48BE62) else Color(0XFFBE4848),
                     modifier = Modifier

@@ -1,3 +1,4 @@
+@file:Suppress("FunctionNaming")
 package dev.garousi.stockwatcher.feature.watchlist.presentation
 
 import androidx.compose.foundation.Image

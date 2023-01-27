@@ -1,3 +1,4 @@
+@file:Suppress("FunctionNaming")
 package dev.garousi.stockwatcher.ui
 
 import androidx.compose.runtime.Composable

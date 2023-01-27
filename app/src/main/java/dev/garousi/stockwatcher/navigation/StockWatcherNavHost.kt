@@ -1,3 +1,4 @@
+@file:Suppress("FunctionNaming")
 package dev.garousi.stockwatcher.navigation
 
 import androidx.compose.runtime.Composable
@@ -8,7 +9,6 @@ import androidx.navigation.compose.NavHost
 @Composable
 fun StockWatcherNavHost(
     navController: NavHostController,
-    onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
     startDestination: String = watchlistGraphRoutePattern,
 ) {
