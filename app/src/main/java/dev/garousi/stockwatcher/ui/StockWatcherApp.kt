@@ -1,3 +1,4 @@
+@file:Suppress("FunctionNaming")
 package dev.garousi.stockwatcher.ui
 
 import androidx.compose.foundation.layout.Column
@@ -32,8 +33,6 @@ fun StockWatcherApp(
                 testTagsAsResourceId = true
             },
         bottomBar = {
-            if (appState.shouldShowBottomBar) {
-            }
         },
     ) { padding ->
         Row(
@@ -49,12 +48,8 @@ fun StockWatcherApp(
         ) {
             Column(Modifier.fillMaxSize()) {
                 // Show the top app bar on top level destinations.
-                val destination = appState.currentTopLevelDestination
-                if (destination != null) {
-                }
                 StockWatcherNavHost(
-                    navController = appState.navController,
-                    onBackClick = appState::onBackClick,
+                    navController = appState.navController
                 )
             }
         }

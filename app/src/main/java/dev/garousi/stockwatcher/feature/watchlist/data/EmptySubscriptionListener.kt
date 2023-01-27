@@ -1,3 +1,4 @@
+@file:Suppress("TooManyFunctions")
 package dev.garousi.stockwatcher.feature.watchlist.data
 
 import com.lightstreamer.client.ItemUpdate

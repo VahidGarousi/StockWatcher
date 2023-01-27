@@ -1,3 +1,4 @@
+@file:Suppress("FunctionNaming")
 package dev.garousi.stockwatcher.feature.watchlist.presentation
 
 import androidx.compose.foundation.Image
@@ -40,7 +41,7 @@ fun StockList(
         ) {
             itemsIndexed(
                 items = stocks,
-                key = { index, item -> item.itemName },
+                key = { _, item -> item.itemName },
             ) { index, stock ->
                 StockItem(
                     stock = stock,

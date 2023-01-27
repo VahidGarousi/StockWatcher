@@ -1,3 +1,4 @@
+@file:Suppress("MagicNumber")
 package dev.garousi.stockwatcher.ui.theme
 
 import androidx.compose.ui.graphics.Color

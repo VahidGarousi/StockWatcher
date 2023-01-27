@@ -1,3 +1,4 @@
+@file:Suppress("CyclomaticComplexMethod")
 package dev.garousi.stockwatcher.feature.watchlist.presentation
 
 import android.util.Log
@@ -32,9 +33,6 @@ class WatchlistViewModel @Inject constructor(
         stockListLightStreamerService
             .subscribe()
             .flow
-            .catch { cause: Throwable ->
-                Log.i("LOGGER", "" + cause.localizedMessage.orEmpty())
-            }
             .map { stock ->
                 _uiState.update { it.copy(isLoading = false) }
                 stock.itemPos?.let { updatedItemIndex ->
@@ -59,6 +57,9 @@ class WatchlistViewModel @Inject constructor(
                         )
                     }
                 }
+            }
+            .catch { cause: Throwable ->
+                Log.i("LOGGER", "" + cause.localizedMessage.orEmpty())
             }
             .stateIn(
                 scope = viewModelScope,

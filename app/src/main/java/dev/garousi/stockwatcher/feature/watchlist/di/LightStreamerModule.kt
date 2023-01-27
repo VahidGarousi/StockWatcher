@@ -1,3 +1,5 @@
+@file:Suppress("UnnecessaryAbstractClass")
+
 package dev.garousi.stockwatcher.feature.watchlist.di
 
 import dagger.Binds

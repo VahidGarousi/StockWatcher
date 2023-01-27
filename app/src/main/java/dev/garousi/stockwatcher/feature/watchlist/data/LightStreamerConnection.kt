@@ -1,3 +1,5 @@
+@file:Suppress("LongParameterList", "TooManyFunctions")
+
 package dev.garousi.stockwatcher.feature.watchlist.data
 
 import android.util.Log
