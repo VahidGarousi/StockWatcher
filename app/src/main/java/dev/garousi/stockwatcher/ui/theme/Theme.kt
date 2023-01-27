@@ -1,4 +1,4 @@
-@file:Suppress("MagicNumber","FunctionNaming")
+@file:Suppress("MagicNumber", "FunctionNaming")
 package dev.garousi.stockwatcher.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme

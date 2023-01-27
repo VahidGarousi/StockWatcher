@@ -1,4 +1,4 @@
-@file:Suppress("MagicNumber","ForEachOnRange")
+@file:Suppress("MagicNumber", "ForEachOnRange")
 package dev.garousi.stockwatcher.feature.watchlist.presentation
 
 import dev.garousi.stockwatcher.feature.watchlist.domain.models.Stock

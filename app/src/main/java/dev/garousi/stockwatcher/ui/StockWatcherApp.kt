@@ -33,7 +33,6 @@ fun StockWatcherApp(
                 testTagsAsResourceId = true
             },
         bottomBar = {
-
         },
     ) { padding ->
         Row(

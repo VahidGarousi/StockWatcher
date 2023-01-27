@@ -24,4 +24,4 @@ jobs:
         run: ./gradlew assemble
 
       - name: Static Analysis
-        run: ./gradlew spotlessCheck detekt
+        run: ./gradlew ktlintCheck detekt

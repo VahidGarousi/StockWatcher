@@ -1,7 +1,7 @@
 @file:Suppress("UnusedPrivateMember")
 package dev.garousi.stockwatcher.feature.watchlist.data
 
-enum class SubscriptionMode(mode: String) {
-    Merge("MERGE"),
-    Command("COMMAND"),
+enum class SubscriptionMode {
+    Merge,
+    Command,
 }
