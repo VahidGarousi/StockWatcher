@@ -16,5 +16,5 @@ data class StockListDto(
     val min: Double? = null,
     val max: Double? = null,
     val ref: Double? = null,
-    val open: Double? = null,
+    val open: Double? = null
 )

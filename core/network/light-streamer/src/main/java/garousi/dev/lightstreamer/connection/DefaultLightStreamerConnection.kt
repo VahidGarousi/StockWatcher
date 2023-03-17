@@ -1,12 +1,12 @@
-package garousi.dev.light_streamer.connection
+package garousi.dev.lightstreamer.connection
 
 import android.util.Log
 import com.lightstreamer.client.ClientListener
 import com.lightstreamer.client.LightstreamerClient
 import com.lightstreamer.client.Subscription
 import com.lightstreamer.client.SubscriptionListener
-import garousi.dev.light_streamer.listeners.EmptyClientListener
-import garousi.dev.light_streamer.models.SubscriptionMode
+import garousi.dev.lightstreamer.listeners.EmptyClientListener
+import garousi.dev.lightstreamer.models.SubscriptionMode
 
 class DefaultLightStreamerConnection : LightStreamerConnection {
     override var lsClient: LightstreamerClient? = null

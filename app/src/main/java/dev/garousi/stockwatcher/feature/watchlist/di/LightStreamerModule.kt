@@ -6,8 +6,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.garousi.stockwatcher.feature.watchlist.data.LightStreamerConnection
-import dev.garousi.stockwatcher.feature.watchlist.data.LightStreamerConnectionImpl
+import garousi.dev.lightstreamer.connection.DefaultLightStreamerConnection
+import garousi.dev.lightstreamer.connection.LightStreamerConnection
 import javax.inject.Singleton
 
 @Module
@@ -15,5 +15,5 @@ import javax.inject.Singleton
 abstract class LightStreamerModule {
     @Binds
     @Singleton
-    abstract fun bindsLightStreamerService(impl: LightStreamerConnectionImpl): LightStreamerConnection
+    abstract fun bindsLightStreamerService(impl: DefaultLightStreamerConnection): LightStreamerConnection
 }

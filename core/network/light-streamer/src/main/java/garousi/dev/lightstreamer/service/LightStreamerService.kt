@@ -1,4 +1,4 @@
-package garousi.dev.light_streamer.service
+package garousi.dev.lightstreamer.service
 
 import com.lightstreamer.client.ItemUpdate
 import kotlinx.coroutines.flow.StateFlow

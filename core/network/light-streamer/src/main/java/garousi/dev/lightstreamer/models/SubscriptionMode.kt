@@ -1,4 +1,4 @@
-package garousi.dev.light_streamer.models
+package garousi.dev.lightstreamer.models
 
 enum class SubscriptionMode {
     Merge,

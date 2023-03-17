@@ -1,4 +1,4 @@
-package garousi.dev.light_streamer.listeners
+package garousi.dev.lightstreamer.listeners
 
 import com.lightstreamer.client.ClientListener
 import com.lightstreamer.client.LightstreamerClient
