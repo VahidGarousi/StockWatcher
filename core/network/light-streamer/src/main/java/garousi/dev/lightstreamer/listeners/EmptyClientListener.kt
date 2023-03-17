@@ -1,4 +1,4 @@
-package dev.garousi.stockwatcher.feature.watchlist.data
+package garousi.dev.lightstreamer.listeners
 
 import com.lightstreamer.client.ClientListener
 import com.lightstreamer.client.LightstreamerClient

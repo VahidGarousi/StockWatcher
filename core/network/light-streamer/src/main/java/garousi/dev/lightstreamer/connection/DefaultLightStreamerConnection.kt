@@ -1,58 +1,16 @@
-@file:Suppress("LongParameterList", "TooManyFunctions")
-
-package dev.garousi.stockwatcher.feature.watchlist.data
+@file:Suppress("TooManyFunctions") // TODO: Do we need to separate this files methods in multiple file?
+package garousi.dev.lightstreamer.connection
 
 import android.util.Log
 import com.lightstreamer.client.ClientListener
 import com.lightstreamer.client.LightstreamerClient
 import com.lightstreamer.client.Subscription
 import com.lightstreamer.client.SubscriptionListener
+import garousi.dev.lightstreamer.listeners.EmptyClientListener
+import garousi.dev.lightstreamer.models.SubscriptionMode
 import javax.inject.Inject
 
-interface LightStreamerConnection {
-    val lsClient: LightstreamerClient?
-    var subscriptionListener: SubscriptionListener?
-    var subscription: Subscription?
-    fun connect(serverAddress: String, adapterSet: String)
-    fun disconnect()
-    fun subscribe(
-        subscriptionMode: SubscriptionMode,
-        dataAdapter: String? = null,
-        requestedSnapshot: String? = null,
-        requestedMaxFrequency: String? = null,
-        itemNames: Array<String>,
-        fieldNames: Array<String>,
-    ): Subscription?
-
-    fun subscribe(
-        subscriptionMode: SubscriptionMode,
-        dataAdapter: String? = null,
-        requestedSnapshot: String? = null,
-        requestedMaxFrequency: String? = null,
-        itemName: String,
-        fieldNames: Array<String>,
-    ): Subscription?
-
-    fun unsubscribe()
-    fun subscribeToClient()
-    fun setSubscription(
-        subscriptionMode: SubscriptionMode,
-        itemNames: Array<String>,
-        fieldNames: Array<String>,
-    )
-
-    fun setSubscription(
-        subscriptionMode: SubscriptionMode,
-        itemName: String,
-        fieldNames: Array<String>,
-    )
-
-    fun setRequestedSnapshot(requestedSnapshot: String?)
-    fun setRequestedMaxFrequency(requestedMaxFrequency: String?)
-}
-
-class LightStreamerConnectionImpl @Inject constructor() : LightStreamerConnection {
-
+class DefaultLightStreamerConnection @Inject constructor() : LightStreamerConnection {
     override var lsClient: LightstreamerClient? = null
     override var subscription: Subscription? = null
     override var subscriptionListener: SubscriptionListener? = null

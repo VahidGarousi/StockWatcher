@@ -4,9 +4,11 @@ import android.util.Log
 import com.lightstreamer.client.ItemUpdate
 import com.lightstreamer.client.Subscription
 import com.lightstreamer.client.SubscriptionListener
+import garousi.dev.lightstreamer.connection.LightStreamerConnection
+import garousi.dev.lightstreamer.models.SubscriptionMode
+import garousi.dev.lightstreamer.service.LightStreamerService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,15 +18,18 @@ import javax.inject.Inject
 
 class StockListLightStreamerService @Inject constructor(
     private val connection: LightStreamerConnection,
+    private val externalScope: CoroutineScope
 ) : LightStreamerService<StockListDto> {
 
-    private val scope = CoroutineScope(SupervisorJob())
     private var dto = StockListDto()
-    private val _flow: MutableStateFlow<StockListDto> = MutableStateFlow(StockListDto())
-    override val flow = _flow.asStateFlow()
+    private val _stockListStream: MutableStateFlow<StockListDto> = MutableStateFlow(StockListDto())
+    override val stream = _stockListStream.asStateFlow()
 
     init {
-        connection.connect(serverAddress = serverAddress, adapterSet = adapterSet)
+        connection.connect(
+            serverAddress = serverAddress,
+            adapterSet = adapterSet
+        )
     }
 
     companion object {
@@ -152,13 +157,13 @@ class StockListLightStreamerService @Inject constructor(
             ref = ref,
             open = open,
         )
-        scope.launch(Dispatchers.IO) {
-            _flow.emit(dto)
+        externalScope.launch(Dispatchers.IO) {
+            _stockListStream.emit(dto)
         }
     }
 
     override fun unsubscribe() {
         connection.unsubscribe()
-        scope.cancel()
+        externalScope.cancel()
     }
 }
