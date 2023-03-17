@@ -11,6 +11,7 @@ interface LightStreamerConnection {
     var subscription: Subscription?
     fun connect(serverAddress: String, adapterSet: String)
     fun disconnect()
+    @Suppress("LongParameterList")
     fun subscribe(
         subscriptionMode: SubscriptionMode,
         dataAdapter: String? = null,
@@ -20,6 +21,7 @@ interface LightStreamerConnection {
         fieldNames: Array<String>,
     ): Subscription?
 
+    @Suppress("LongParameterList")
     fun subscribe(
         subscriptionMode: SubscriptionMode,
         dataAdapter: String? = null,
