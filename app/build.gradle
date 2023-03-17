@@ -88,6 +88,7 @@ dependencies {
 
 
     implementation project(":core:network:light-streamer")
+    implementation project(":core:common")
 //    testImplementation "io.mockk:mockk:1.12.4"
 //    androidTestImplementation "io.mockk:mockk-android:1.12.4"
 }
