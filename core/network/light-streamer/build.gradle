@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -38,7 +40,13 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
+    implementation project(":core:common")
     api "com.lightstreamer:ls-android-client:4.2.6"
     api "com.lightstreamer:ls-log-adapter-java:1.0.2"
 
+    implementation "com.google.dagger:hilt-android:2.44.2"
+    kapt "com.google.dagger:hilt-compiler:2.44.2"
+
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.44.2'
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.44.2'
 }
