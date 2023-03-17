@@ -69,9 +69,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
-    implementation "com.lightstreamer:ls-android-client:4.2.6"
-    implementation "com.lightstreamer:ls-log-adapter-java:1.0.2"
-
     implementation "androidx.navigation:navigation-compose:2.5.3"
 
 
@@ -90,6 +87,7 @@ dependencies {
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
 
 
+    implementation project(":core:network:light-streamer")
 //    testImplementation "io.mockk:mockk:1.12.4"
 //    androidTestImplementation "io.mockk:mockk-android:1.12.4"
 }
