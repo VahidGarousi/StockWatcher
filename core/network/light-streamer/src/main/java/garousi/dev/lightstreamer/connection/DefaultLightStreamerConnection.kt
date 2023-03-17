@@ -1,3 +1,4 @@
+@file:Suppress("TooManyFunctions") // TODO: Do we need to separate this files methods in multiple file?
 package garousi.dev.lightstreamer.connection
 
 import android.util.Log
