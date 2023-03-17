@@ -8,8 +8,9 @@ import com.lightstreamer.client.Subscription
 import com.lightstreamer.client.SubscriptionListener
 import garousi.dev.lightstreamer.listeners.EmptyClientListener
 import garousi.dev.lightstreamer.models.SubscriptionMode
+import javax.inject.Inject
 
-class DefaultLightStreamerConnection : LightStreamerConnection {
+class DefaultLightStreamerConnection @Inject constructor() : LightStreamerConnection {
     override var lsClient: LightstreamerClient? = null
     override var subscription: Subscription? = null
     override var subscriptionListener: SubscriptionListener? = null
